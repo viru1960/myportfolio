@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birendra Tiaka — Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        canvas: '#070913',
+                        card: '#0d1124',
+                        cardBorder: 'rgba(56, 189, 248, 0.12)',
+                        cyanGlow: '#00e5ff',
+                        purpleGlow: '#a855f7',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070913;
+            color: #cbd5e1;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glow Buttons */
+        .btn-gradient {
+            background: linear-gradient(135deg, #00d2ff 0%, #9333ea 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.35);
+        }
+
+        .btn-gradient:hover {
+            box-shadow: 0 6px 28px rgba(168, 85, 247, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Neon Avatar Rings */
+        .hero-glow-ring {
+            position: relative;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, #00f0ff 0%, #7c3aed 50%, #ec4899 100%);
+            box-shadow: 0 0 45px rgba(0, 240, 255, 0.35), 0 0 65px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Organic blob background for About Me */
+        .blob-shape {
+            background: linear-gradient(145deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%);
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+            box-shadow: 0 0 40px rgba(79, 70, 229, 0.4);
+            animation: morphBlob 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes morphBlob {
+            0% {
+                border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+            }
+
+            100% {
+                border-radius: 60% 40% 35% 65% / 55% 50% 50% 45%;
+            }
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: rgba(13, 17, 36, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(56, 189, 248, 0.12);
+        }
+
+        /* Progress bar glow */
+        .progress-bar-fill {
+            background: linear-gradient(90deg, #06b6d4 0%, #6366f1 60%, #c084fc 100%);
+            box-shadow: 0 0 14px rgba(99, 102, 241, 0.45);
+        }
+
+        /* Subtle grid background */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+
+<body class="bg-[#070913] text-gray-200 antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Ambient Glow Effects -->
+    <div
+        class="fixed top-[-10%] right-[-5%] w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none -z-10">
+    </div>
+    <div
+        class="fixed top-[40%] left-[-10%] w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none -z-10">
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#070913]/85 border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div
+                    class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 p-[2px] transition group-hover:scale-105">
+                    <div class="w-full h-full bg-[#070913] rounded-[10px] flex items-center justify-center">
+                        <span
+                            class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 text-xl">B</span>
+                    </div>
+                </div>
+                <span
+                    class="font-bold text-xl tracking-tight text-white group-hover:text-cyan-400 transition">BirendraTiaka</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#home"
+                    class="text-white hover:text-cyan-400 transition relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-cyan-400">Home</a>
+                <a href="#about" class="hover:text-cyan-400 transition">About</a>
+                <a href="#skills" class="hover:text-cyan-400 transition">Skills</a>
+                <a href="#services" class="hover:text-cyan-400 transition">Services</a>
+                <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="#contact"
+                    class="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/20 transition-all hover:shadow-cyan-500/35 hover:-translate-y-0.5">
+                    <i class="fa-solid fa-download text-xs"></i>
+                    <span>Download CV</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" aria-label="Toggle menu" class="md:hidden text-gray-300 hover:text-white p-2">
+                <i class="fa-solid fa-bars-staggered text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobileMenu"
+            class="hidden md:hidden bg-[#0d1124] border-b border-white/10 px-6 py-4 flex flex-col gap-4 text-sm font-medium">
+            <a href="#home" class="text-cyan-400">Home</a>
+            <a href="#about" class="text-gray-300 hover:text-white">About</a>
+            <a href="#skills" class="text-gray-300 hover:text-white">Skills</a>
+            <a href="#services" class="text-gray-300 hover:text-white">Services</a>
+            <a href="#contact" class="text-gray-300 hover:text-white">Contact</a>
+            <a href="#contact"
+                class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-white mt-2">
+                <i class="fa-solid fa-download"></i> Download CV
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pt-8 pb-20">
+
+        <!-- HERO SECTION -->
+        <section id="home"
+            class="min-h-[80vh] flex flex-col-reverse lg:flex-row items-center justify-between gap-12 py-10 lg:py-16">
+            <!-- Left Content -->
+            <div class="flex-1 text-center lg:text-left">
+                <span
+                    class="inline-block px-3 py-1 text-xs font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/40 border border-cyan-800/40 rounded-full mb-4">
+                    HELLO!
+                </span>
+
+                <h1
+                    class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-3">
+                    I'm <span class="text-gradient">Birendra Tiaka</span>
+                </h1>
+
+                <h2 class="text-lg sm:text-xl font-medium text-cyan-400/90 mb-5">
+                    CS Student & Aspiring Digital Creator
+                </h2>
+
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8 font-light">
+                    I'm a first-year Computer Science student at <strong class="text-gray-200 font-medium">Vikram Dev
+                        University, Jeypore</strong>. I design and build modern, responsive web experiences with clean
+                    code and creative design, turning ideas into elegant digital solutions.
+                </p>
+
+                <!-- CTA & Socials -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+                    <a href="#contact"
+                        class="btn-gradient inline-flex items-center gap-3 px-7 py-3 rounded-full text-sm font-semibold text-white tracking-wide">
+                        <span>Let's talk</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+
+                    <!-- Social Buttons -->
+                    <div class="flex items-center gap-3">
+                        <a href="https://instagram.com/https_vru" target="_blank" rel="noopener noreferrer"
+                            title="Instagram"
+                            class="w-10 h-10 rounded-full bg-[#12172f] border border-white/10 hover:border-cyan-400/50 flex items-center justify-center text-gray-300 hover:text-cyan-400 transition hover:scale-110 shadow-sm">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                        <a href="https://wa.me/919337208863" target="_blank" rel="noopener noreferrer" title="WhatsApp"
+                            class="w-10 h-10 rounded-full bg-[#12172f] border border-white/10 hover:border-cyan-400/50 flex items-center justify-center text-gray-300 hover:text-cyan-400 transition hover:scale-110 shadow-sm">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                        </a>
+                        <a href="mailto:biroo1960@gmail.com" title="Email"
+                            class="w-10 h-10 rounded-full bg-[#12172f] border border-white/10 hover:border-cyan-400/50 flex items-center justify-center text-gray-300 hover:text-cyan-400 transition hover:scale-110 shadow-sm">
+                            <i class="fa-regular fa-envelope text-sm"></i>
+                        </a>
+                        <a href="#" title="LinkedIn"
+                            class="w-10 h-10 rounded-full bg-[#12172f] border border-white/10 hover:border-cyan-400/50 flex items-center justify-center text-gray-300 hover:text-cyan-400 transition hover:scale-110 shadow-sm">
+                            <i class="fa-brands fa-linkedin-in text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Visual: Neon Halo Profile -->
+            <div class="flex-1 flex justify-center items-center relative">
+                <!-- Backdrop ambient glows -->
+                <div class="absolute w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-cyan-500/20 blur-3xl -z-10"></div>
+                <div
+                    class="absolute w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-purple-600/25 blur-3xl -z-10 translate-x-4 translate-y-4">
+                </div>
+
+                <!-- Halo Ring Container -->
+                <div class="hero-glow-ring p-1.5 sm:p-2 rounded-full">
+                    <div
+                        class="w-64 h-64 sm:w-80 sm:h-80 md:w-88 md:h-88 rounded-full overflow-hidden bg-[#0d1124] relative">
+                        <img src="image/1000098510.png" alt="Birendra Tiaka"
+                            class="w-full h-full object-cover object-center filter contrast-105"
+                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-16"></div>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left: Fluid Morphing Avatar -->
+                <div class="lg:col-span-5 flex justify-center relative">
+                    <div class="relative w-64 h-64 sm:w-72 sm:h-72">
+                        <!-- Fluid background blob shape -->
+                        <div class="absolute inset-0 blob-shape opacity-85"></div>
+                        <!-- Clipped Portrait -->
+                        <div
+                            class="absolute inset-2 overflow-hidden rounded-[38%_62%_63%_37%/41%_44%_56%_59%] bg-[#0d1124] border-2 border-cyan-400/30">
+                            <img src="image/1000098510.png" alt="Birendra Tiaka Portrait"
+                                class="w-full h-full object-cover object-top"
+                                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';" />
+                        </div>
+                        <!-- Subtle accent sparkles -->
+                        <div class="absolute -top-3 -right-2 text-cyan-300 text-xl animate-pulse"><i
+                                class="fa-solid fa-sparkles"></i>✦</div>
+                    </div>
+                </div>
+
+                <!-- Right: Description and Stats -->
+                <div class="lg:col-span-7">
+                    <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase">ABOUT ME</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1 mb-4">
+                        Turning Ideas Into <span class="text-gradient">Digital Reality</span>
+                    </h2>
+
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 font-light">
+                        I'm a dedicated and enthusiastic Computer Science student at <strong
+                            class="text-cyan-300 font-medium">Vikram Dev University, Jeypore</strong>. My passion
+                        revolves around front-end craft, intuitive user interfaces,video editing and animation design
+                        etc. I love
+                        taking complex problems and structuring them into elegant, lightning-fast digital experiences.
+                    </p>
+
+                    <!-- 3 Stat Badges -->
+                    <div class="grid grid-cols-3 gap-3 sm:gap-4 mb-8">
+                        <!-- Box 1 -->
+                        <div
+                            class="glass-card p-3.5 sm:p-4 rounded-xl text-center sm:text-left flex flex-col justify-between">
+                            <i class="fa-regular fa-calendar-check text-cyan-400 text-lg mb-2"></i>
+                            <div>
+                                <div class="text-lg sm:text-xl font-bold text-white">1st Year</div>
+                                <div class="text-[11px] sm:text-xs text-gray-400">CS at VDU Jeypore</div>
+                            </div>
+                        </div>
+
+                        <!-- Box 2 -->
+                        <div
+                            class="glass-card p-3.5 sm:p-4 rounded-xl text-center sm:text-left flex flex-col justify-between">
+                            <i class="fa-regular fa-folder-open text-purple-400 text-lg mb-2"></i>
+                            <div>
+                                <div class="text-lg sm:text-xl font-bold text-white">10+</div>
+                                <div class="text-[11px] sm:text-xs text-gray-400">Projects & Labs</div>
+                            </div>
+                        </div>
+
+                        <!-- Box 3 -->
+                        <div
+                            class="glass-card p-3.5 sm:p-4 rounded-xl text-center sm:text-left flex flex-col justify-between">
+                            <i class="fa-regular fa-star text-pink-400 text-lg mb-2"></i>
+                            <div>
+                                <div class="text-lg sm:text-xl font-bold text-white">100%</div>
+                                <div class="text-[11px] sm:text-xs text-gray-400">Dedication</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <a href="#contact"
+                        class="btn-gradient inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-white">
+                        <span>Hire Me</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-16"></div>
+
+        <!-- TECHNICAL SKILLS SECTION -->
+        <section id="skills" class="py-12">
+            <div class="mb-10 text-center sm:text-left">
+                <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase">MY SKILLS</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">
+                    Technical Skills & <span class="text-gradient">Expertise</span>
+                </h2>
+                <p class="text-gray-400 text-sm max-w-xl mt-2 font-light">
+                    I work with core web technologies and computational foundations to build fast, scalable, and
+                    responsive applications.
+                </p>
+            </div>
+
+            <!-- Skills Grid (2 columns) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+
+                <!-- Skill 1: HTML -->
+                <div class="glass-card p-4 sm:p-5 rounded-2xl flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
+                        <i class="fa-brands fa-html5 text-orange-500 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-bold text-white">HTML5</span>
+                            <span class="text-xs font-semibold text-gray-400">95%</span>
+                        </div>
+                        <div class="w-full h-2 bg-[#171c36] rounded-full overflow-hidden">
+                            <div class="progress-bar-fill h-full rounded-full" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 2: JavaScript -->
+                <div class="glass-card p-4 sm:p-5 rounded-2xl flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-yellow-500/15 border border-yellow-500/30 flex items-center justify-center shrink-0">
+                        <i class="fa-brands fa-square-js text-yellow-400 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-bold text-white">JavaScript (ES6+)</span>
+                            <span class="text-xs font-semibold text-gray-400">85%</span>
+                        </div>
+                        <div class="w-full h-2 bg-[#171c36] rounded-full overflow-hidden">
+                            <div class="progress-bar-fill h-full rounded-full" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 3: CSS -->
+                <div class="glass-card p-4 sm:p-5 rounded-2xl flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center shrink-0">
+                        <i class="fa-brands fa-css3-alt text-blue-400 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-bold text-white">CSS3 & Tailwind CSS</span>
+                            <span class="text-xs font-semibold text-gray-400">50%</span>
+                        </div>
+                        <div class="w-full h-2 bg-[#171c36] rounded-full overflow-hidden">
+                            <div class="progress-bar-fill h-full rounded-full" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 4: React / C -->
+                <div class="glass-card p-4 sm:p-5 rounded-2xl flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center shrink-0">
+                        <i class="fa-brands fa-react text-cyan-400 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-bold text-white">React & C Core</span>
+                            <span class="text-xs font-semibold text-gray-400">50%</span>
+                        </div>
+                        <div class="w-full h-2 bg-[#171c36] rounded-full overflow-hidden">
+                            <div class="progress-bar-fill h-full rounded-full" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-16"></div>
+
+        <!-- MY SERVICES / WHAT I DO SECTION -->
+        <section id="services" class="py-12">
+            <div class="mb-10 text-center sm:text-left">
+                <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase">MY SERVICES</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">
+                    What <span class="text-gradient">I Do</span>
+                </h2>
+                <p class="text-gray-400 text-sm max-w-xl mt-2 font-light">
+                    Offering clean front-end engineering, intuitive interface designs, and solid programming
+                    foundations.
+                </p>
+            </div>
+
+            <!-- 3 Service Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Card 1 -->
+                <div class="glass-card p-7 rounded-2xl relative overflow-hidden group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-5 text-cyan-400 group-hover:scale-110 transition shadow-lg shadow-blue-500/10">
+                        <i class="fa-solid fa-code text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition">Web Development
+                    </h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Modern, responsive, and high performance websites tailored to clean standards and cross-device
+                        smoothness.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-7 rounded-2xl relative overflow-hidden group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center mb-5 text-cyan-300 group-hover:scale-110 transition shadow-lg shadow-cyan-500/10">
+                        <i class="fa-solid fa-pen-nib text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition">Designing</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Clean, creative, and user-centric designs that deliver memorable digital experiences with modern
+                        dark aesthetics.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-7 rounded-2xl relative overflow-hidden group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center mb-5 text-purple-300 group-hover:scale-110 transition shadow-lg shadow-purple-500/10">
+                        <i class="fa-solid fa-terminal text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition">Problem Solving
+                    </h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Data structures and algorithms in C & python, solving real problems with organized logic
+                        and clean code.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-16"></div>
+
+        <!-- CONTACT DETAILS SECTION -->
+        <section id="contact" class="py-12">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-white/10">
+                <!-- Ambient corner light -->
+                <div
+                    class="absolute -top-16 -right-16 w-60 h-60 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none">
+                </div>
+
+                <div class="max-w-2xl mx-auto text-center mb-10">
+                    <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase">GET IN TOUCH</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1 mb-3">
+                        Let's Build Something <span class="text-gradient">Together</span>
+                    </h2>
+                    <p class="text-gray-400 text-sm">
+                        Feel free to reach out directly through any of the channels below. I'm always open to discussing
+                        new projects, learning opportunities, or tech collabs!
+                    </p>
+                </div>
+
+                <!-- Contact Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <!-- Email Card -->
+                    <a href="mailto:biroo1960@gmail.com"
+                        class="bg-[#070913]/70 hover:bg-[#070913] border border-white/5 hover:border-cyan-400/40 p-6 rounded-2xl flex flex-col justify-between transition group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-semibold tracking-wider text-gray-400 uppercase">EMAIL</span>
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-500 group-hover:text-cyan-400 transition"></i>
+                        </div>
+                        <div>
+                            <div
+                                class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-3">
+                                <i class="fa-regular fa-envelope text-lg"></i>
+                            </div>
+                            <p class="text-white font-medium text-sm break-all group-hover:text-cyan-300 transition">
+                                biroo1960@gmail.com</p>
+                        </div>
+                    </a>
+
+                    <!-- WhatsApp / Phone Card -->
+                    <a href="https://wa.me/919337208863" target="_blank" rel="noopener noreferrer"
+                        class="bg-[#070913]/70 hover:bg-[#070913] border border-white/5 hover:border-cyan-400/40 p-6 rounded-2xl flex flex-col justify-between transition group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-semibold tracking-wider text-gray-400 uppercase">PHONE /
+                                WHATSAPP</span>
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-500 group-hover:text-cyan-400 transition"></i>
+                        </div>
+                        <div>
+                            <div
+                                class="w-10 h-10 rounded-lg bg-green-500/10 text-green-400 flex items-center justify-center mb-3">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <p class="text-white font-medium text-sm group-hover:text-cyan-300 transition">+91 93372
+                                08863</p>
+                        </div>
+                    </a>
+
+                    <!-- Instagram Card -->
+                    <a href="https://instagram.com/https_vru" target="_blank" rel="noopener noreferrer"
+                        class="bg-[#070913]/70 hover:bg-[#070913] border border-white/5 hover:border-cyan-400/40 p-6 rounded-2xl flex flex-col justify-between transition group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-semibold tracking-wider text-gray-400 uppercase">INSTAGRAM</span>
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-500 group-hover:text-cyan-400 transition"></i>
+                        </div>
+                        <div>
+                            <div
+                                class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center mb-3">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </div>
+                            <p class="text-white font-medium text-sm group-hover:text-cyan-300 transition">@https_vru
+                            </p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-8 text-center text-xs text-gray-500">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Birendra Tiaka — Vikram Dev University, Jeypore. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#home" class="hover:text-gray-300">Back to Top ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple script for mobile navigation -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
